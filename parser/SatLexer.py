@@ -1,30 +1,34 @@
-import sys as s
+from SatFileReader import Reader
 
 class Lexer:
     def __init__(self, *contents):
-        self.contents = contents.split(' ')
+        self.contents = contents
         self.commands = []
 
     def read(self):
         for string in self.contents:
-            print(string)
+            for el in string:
+                self._parseString(el)
+        
 
     #чекает всю строчку
-    def _parseString(self, string):
+    def _parseString(self, command):
         ## Исправить хрень с тем, что парсер работает криво
-        if (command_list[0] == 'use'):
-            if (len(command_list) != 2):
+        print(command)
+        if (command[0] == 'use'):
+            if (len(command) != 2):
                 return self._error('command use have only one fuckin argument!', 102)
             
-            if (command_list[1] != 'chromium' or command_list[1] != 'firefox'):
-                return self._error('unknown argument!', 101)
+            if (command[1] == 'chromium' or command[1] == 'firefox'):
+                return self._error(f'unknown argument >> {command[1]} <<', 101)
 
-        errMsg = 'unkown command >> ' + string[0] + ' << please read the fucking documentation before doing anything'
-        return self._error(errMsg, 101)
+            # Логика слениума
+        return self._error(f'unkown command >> {command[0]} << please read the fucking documentation before doing anything', 101)
 
     def _error(self, msg, code):
         print('lexer error: ' + msg)
         return code
 
-lol = Lexer('use chromium use firefox')
-lol.read()
+reader = Reader('test.sat')
+lexer = Lexer(reader.readFile())
+lexer.read()

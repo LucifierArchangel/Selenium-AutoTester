@@ -27,10 +27,6 @@ class Reader:
         file.close()
         return commands
 
-    def _clear(self):
-        pass
-
-
     def _error(self, msg, code):
         print('file reader error: ' + msg)
         return code
