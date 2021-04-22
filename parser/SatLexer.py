@@ -2,14 +2,12 @@ import sys as s
 
 class Lexer:
     def __init__(self, contents):
-        self.contents = contents
-
+        self.contents = contents.split(' ')
         self.commands = []
     
     def read(self):
         for string in self.contents:
-            self._parseString(string)
-        pass
+            print(string)
 
     def _error(self, msg, code):
         print('lexer error: ' + msg)
@@ -31,5 +29,5 @@ class Lexer:
         self._error(errMsg, 101)
         pass
 
-lol = Lexer((['use chromium'], ['use firefox']))
+lol = Lexer('use chromium use firefox')
 lol.read()

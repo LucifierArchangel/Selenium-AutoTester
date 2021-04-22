@@ -1,0 +1,3 @@
+use chromium
+
+open 'google.com'
