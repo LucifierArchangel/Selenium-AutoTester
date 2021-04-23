@@ -9,6 +9,7 @@ Comannds list:
     keys [findmode] [selector] [keys(list)] - insert values ​​into the desired field
 
 error code: 
+    000 - ok
     104 - file empety or dosent exist
     101 - unknown command
     102 - argument exeption

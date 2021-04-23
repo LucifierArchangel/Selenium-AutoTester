@@ -130,3 +130,5 @@ dmypy.json
 
 # Selenium auto tester files
 *.test.sat
+
+chromedriver
